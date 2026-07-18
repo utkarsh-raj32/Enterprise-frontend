@@ -2,28 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import styles from './Dashboard.module.css'; // Reusing the same grid layout logic
 import { Users, UserPlus, Search } from 'lucide-react';
+import AddEmployeeModal from '../components/AddEmployeeModal';
 
 const Employees = () => {
   const { token } = useAuth();
   const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const fetchEmployees = async () => {
+    try {
+      setIsLoading(true);
+      const res = await fetch('https://enterprise-7txq.onrender.com/api/v1/employees', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const data = await res.json();
+      if (res.ok && data.data) {
+        setEmployees(data.data.content || data.data);
+      }
+    } catch (e) {
+      console.error("Failed to fetch employees:", e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const res = await fetch('https://enterprise-7txq.onrender.com/api/v1/employees', {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const data = await res.json();
-        if (res.ok && data.data) {
-          setEmployees(data.data.content || data.data); // Handle both paginated and non-paginated
-        }
-      } catch (e) {
-        console.error("Failed to fetch employees:", e);
-      } finally {
-        setIsLoading(false);
-      }
-    };
     fetchEmployees();
   }, [token]);
 
@@ -35,11 +39,17 @@ const Employees = () => {
             <h1>Employees Directory</h1>
             <p>Manage all enterprise employees and roles.</p>
           </div>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" onClick={() => setIsModalOpen(true)}>
             <UserPlus size={18} /> Add Employee
           </button>
         </div>
       </header>
+      
+      <AddEmployeeModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onEmployeeAdded={fetchEmployees}
+      />
 
       <div className="skeuo-panel" style={{ padding: '24px' }}>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>

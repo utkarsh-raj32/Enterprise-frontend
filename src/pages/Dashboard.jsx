@@ -11,14 +11,18 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        // Fetch departments as an example
-        const res = await fetch('https://enterprise-7txq.onrender.com/api/v1/departments', {
-          headers: { 'Authorization': `Bearer ${token}` }
+        const [deptRes, empRes] = await Promise.all([
+          fetch('https://enterprise-7txq.onrender.com/api/v1/departments', { headers: { 'Authorization': `Bearer ${token}` } }),
+          fetch('https://enterprise-7txq.onrender.com/api/v1/employees?size=1', { headers: { 'Authorization': `Bearer ${token}` } })
+        ]);
+
+        const deptData = await deptRes.json();
+        const empData = await empRes.json();
+
+        setStats({
+          departments: (deptRes.ok && deptData.data) ? deptData.data.length : 0,
+          employees: (empRes.ok && empData.data) ? empData.data.totalElements : 0
         });
-        const data = await res.json();
-        if (res.ok && data.data) {
-          setStats(prev => ({ ...prev, departments: data.data.length }));
-        }
       } catch (e) {
         console.error(e);
       } finally {
@@ -54,7 +58,7 @@ const Dashboard = () => {
           </div>
           <div className={styles.statInfo}>
             <h3>Total Employees</h3>
-            <p className={styles.statValue}>-</p>
+            <p className={styles.statValue}>{isLoading ? '...' : stats.employees}</p>
           </div>
         </div>
         
@@ -64,7 +68,7 @@ const Dashboard = () => {
           </div>
           <div className={styles.statInfo}>
             <h3>Pending Leaves</h3>
-            <p className={styles.statValue}>-</p>
+            <p className={styles.statValue}>0</p>
           </div>
         </div>
       </div>
@@ -72,8 +76,8 @@ const Dashboard = () => {
       <div className={`skeuo-panel ${styles.recentSection}`}>
         <h2>Quick Actions</h2>
         <div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
-          <button className="btn btn-primary">Add Employee</button>
-          <button className="btn btn-outline">Apply for Leave</button>
+          <button className="btn btn-primary" onClick={() => window.location.href = '/employees'}>Go to Employees</button>
+          <button className="btn btn-outline" onClick={() => alert('Leave requests coming soon!')}>Apply for Leave</button>
         </div>
       </div>
     </div>
