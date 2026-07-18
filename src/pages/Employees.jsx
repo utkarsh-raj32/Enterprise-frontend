@@ -41,7 +41,7 @@ const Employees = () => {
         </div>
       </header>
 
-      <div className="glass-panel" style={{ padding: '24px' }}>
+      <div className="skeuo-panel" style={{ padding: '24px' }}>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
           <div style={{ position: 'relative', flex: 1 }}>
             <Search size={18} style={{ position: 'absolute', left: '16px', top: '14px', color: 'var(--text-muted)' }} />

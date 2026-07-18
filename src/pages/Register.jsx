@@ -33,7 +33,7 @@ const Register = () => {
 
   return (
     <div className={styles.loginContainer}>
-      <div className={`glass-panel ${styles.loginCard}`}>
+      <div className={`skeuo-panel ${styles.loginCard}`}>
         
         <div className={styles.loginHeader}>
           <h1>Create Admin Account</h1>

@@ -31,7 +31,7 @@ const Login = () => {
 
   return (
     <div className={styles.loginContainer}>
-      <div className={`glass-panel ${styles.loginCard}`}>
+      <div className={`skeuo-panel ${styles.loginCard}`}>
         
         <div className={styles.loginHeader}>
           <h1>Enterprise HRM</h1>

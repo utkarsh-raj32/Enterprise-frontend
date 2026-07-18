@@ -38,7 +38,7 @@ const Dashboard = () => {
       </header>
 
       <div className={styles.statsGrid}>
-        <div className={`glass-panel ${styles.statCard}`}>
+        <div className={`skeuo-panel ${styles.statCard}`}>
           <div className={styles.statIcon} style={{ background: 'rgba(123, 44, 191, 0.2)', color: 'var(--primary)' }}>
             <Briefcase size={24} />
           </div>
@@ -48,7 +48,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className={`glass-panel ${styles.statCard}`}>
+        <div className={`skeuo-panel ${styles.statCard}`}>
           <div className={styles.statIcon} style={{ background: 'rgba(76, 201, 240, 0.2)', color: 'var(--accent)' }}>
             <Users size={24} />
           </div>
@@ -58,7 +58,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className={`glass-panel ${styles.statCard}`}>
+        <div className={`skeuo-panel ${styles.statCard}`}>
           <div className={styles.statIcon} style={{ background: 'rgba(255, 209, 102, 0.2)', color: 'var(--warning)' }}>
             <Calendar size={24} />
           </div>
@@ -69,7 +69,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className={`glass-panel ${styles.recentSection}`}>
+      <div className={`skeuo-panel ${styles.recentSection}`}>
         <h2>Quick Actions</h2>
         <div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
           <button className="btn btn-primary">Add Employee</button>
