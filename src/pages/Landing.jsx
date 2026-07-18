@@ -85,6 +85,35 @@ const Landing = () => {
         </div>
       </div>
 
+      <section className={styles.howItWorksSection}>
+        <h2 className={styles.howTitle}>How It Works</h2>
+        <div className={styles.stepsContainer}>
+          <div className={`skeuo-panel ${styles.stepCard}`}>
+            <div className={styles.stepNumber}>1</div>
+            <h4 className={styles.stepTitle}>Register Organization</h4>
+            <p className={styles.stepDesc}>Sign up and instantly gain access to the secure admin dashboard. Your enterprise environment is spun up in seconds.</p>
+          </div>
+          
+          <div className={`skeuo-panel ${styles.stepCard}`}>
+            <div className={styles.stepNumber}>2</div>
+            <h4 className={styles.stepTitle}>Onboard Employees</h4>
+            <p className={styles.stepDesc}>Add your personnel to the system, assigning them departments, roles, and base salary structures.</p>
+          </div>
+          
+          <div className={`skeuo-panel ${styles.stepCard}`}>
+            <div className={styles.stepNumber}>3</div>
+            <h4 className={styles.stepTitle}>Manage Operations</h4>
+            <p className={styles.stepDesc}>Employees can apply for annual or sick leave. HR administrators can review, approve, or reject these requests with a single click.</p>
+          </div>
+
+          <div className={`skeuo-panel ${styles.stepCard}`}>
+            <div className={styles.stepNumber}>4</div>
+            <h4 className={styles.stepTitle}>Process Payroll</h4>
+            <p className={styles.stepDesc}>At the end of the month, instantly generate digital payslips reflecting base pay, allowances, and tax deductions.</p>
+          </div>
+        </div>
+      </section>
+
       <footer className={styles.footer}>
         &copy; {new Date().getFullYear()} Enterprise Systems Inc. All rights reserved.
       </footer>
