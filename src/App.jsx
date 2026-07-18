@@ -7,6 +7,8 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Employees from './pages/Employees';
 import Landing from './pages/Landing';
+import Leaves from './pages/Leaves';
+import Salary from './pages/Salary';
 
 function App() {
   return (
@@ -20,8 +22,8 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/employees" element={<Employees />} />
-            <Route path="/leaves" element={<div style={{padding: '32px'}}>Leaves Module Coming Soon</div>} />
-            <Route path="/salary" element={<div style={{padding: '32px'}}>Salary Module Coming Soon</div>} />
+            <Route path="/leaves" element={<Leaves />} />
+            <Route path="/salary" element={<Salary />} />
           </Route>
         </Routes>
       </BrowserRouter>
