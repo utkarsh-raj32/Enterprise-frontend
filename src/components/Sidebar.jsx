@@ -14,7 +14,7 @@ const Sidebar = () => {
   };
 
   const navItems = [
-    { name: 'Dashboard', path: '/', icon: <LayoutDashboard size={20} /> },
+    { name: 'Dashboard', path: '/dashboard', icon: <LayoutDashboard size={20} /> },
     { name: 'Employees', path: '/employees', icon: <Users size={20} /> },
     { name: 'Leaves', path: '/leaves', icon: <CalendarDays size={20} /> },
     { name: 'Salary', path: '/salary', icon: <Wallet size={20} /> }
